@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Chat</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    .mensagens { border: 1px solid #ccc; padding: 10px; height: 300px; overflow-y: auto; }
+    .usuario { font-weight: bold; }
+    .bot { color: green; }
+    .me { color: blue; }
+  </style>
+</head>
+<body>
+  <h1>Bem-vindo, <%= user.nome %>!</h1>
+  <a href="/logout">Sair</a>
+
+  <div class="mensagens">
+    <% mensagens.forEach(m => { %>
+      <p>
+        <span class="<%= m.usuario === 'Bot' ? 'bot' : 'me' %>"><%= m.usuario %>:</span> 
+        <%= m.texto %> 
+        <small>(<%= new Date(m.data).toLocaleTimeString() %>)</small>
+      </p>
+    <% }) %>
+  </div>
+
+  <form action="/chat/enviar" method="post">
+    <input type="text" name="mensagem" placeholder="Digite sua mensagem" required>
+    <input type="hidden" name="etapa" value="apresentacao"> <!-- exemplo -->
+    <button type="submit">Enviar</button>
+  </form>
+</body>
+</html>
