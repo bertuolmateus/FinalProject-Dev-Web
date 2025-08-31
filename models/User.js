@@ -1,13 +1,20 @@
+const db = require('../db/connection');
+
 class User {
-  constructor(username, password) {
+  constructor(username, email, senha) {
     this.username = username;
-    this.password = password;
+    this.email = email;
+    this.senha = senha;
   }
 
-  static findByUsername(username) {
-    // Simulação (depois pode virar consulta no BD)
-    const users = [{ username: "admin", password: "123" }];
-    return users.find(u => u.username === username);
+  // Busca usuário por nome OU email
+  static findByUsernameOrEmail(usuario, callback) {
+    const sql = 'SELECT * FROM usuarios WHERE nome = ? OR email = ? LIMIT 1';
+    db.query(sql, [usuario, usuario], (err, results) => {
+      if (err) return callback(err, null);
+      if (results.length === 0) return callback(null, null);
+      return callback(null, results[0]);
+    });
   }
 }
 

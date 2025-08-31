@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Gerar NF-e</title>
+</head>
+<body>
+  <h2>Emitir NF-e</h2>
+  <form action="/nfe/gerar" method="POST">
+    <label>CNPJ Emitente:</label>
+    <input type="text" name="cnpjEmitente" required><br>
+
+    <label>Nome/Razão Social Destinatário:</label>
+    <input type="text" name="nomeDestinatario" required><br>
+
+    <label>CNPJ Destinatário:</label>
+    <input type="text" name="cnpjDestinatario" required><br>
+
+    <label>Endereço Destinatário:</label>
+    <input type="text" name="endereco" required><br>
+
+    <button type="submit">Gerar NF-e</button>
+  </form>
+
+  <a href="/logout">Sair</a>
+</body>
+</html>
