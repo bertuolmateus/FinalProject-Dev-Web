@@ -1,0 +1,1 @@
+This is a web-based NF-e generator developed as a graduation project. The application acts as a simulator, providing user authentication with login and registration. After logging in, users can fill out a form with all the required fields for an NF-e and generate a PDF, which is downloaded directly to their desktop.
