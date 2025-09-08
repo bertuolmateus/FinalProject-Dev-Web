@@ -29,6 +29,14 @@ exports.postLogin = (req, res) => {
   });
 };
 
+exports.getLogin = (req, res) => {
+  res.render('login', { error: null, user: req.session.user });
+};
+
+exports.getRegister = (req, res) => {
+  res.render('register', { error: null, user: req.session.user || null });
+};
+
 // Logout
 exports.logout = (req, res) => {
   req.session.destroy((err) => {
@@ -38,3 +46,41 @@ exports.logout = (req, res) => {
     res.redirect('/login');
   });
 };
+
+// Mostra tela de registro
+exports.getRegister = (req, res) => {
+  res.render('register', { error: null });
+};
+
+// Processa registro
+exports.postRegister = (req, res) => {
+  const { nome, email, senha } = req.body;
+
+  if (!nome || !email || !senha) {
+    return res.render('register', { error: 'Preencha todos os campos.' });
+  }
+
+  // Verifica se usuário já existe
+  User.findByUsernameOrEmail(email, (err, existingUser) => {
+    if (err) {
+      console.error('Erro ao verificar usuário:', err);
+      return res.render('register', { error: 'Erro no servidor.' });
+    }
+
+    if (existingUser) {
+      return res.render('register', { error: 'Usuário já existe.' });
+    }
+
+    // Cria novo usuário
+    User.create({ nome, email, senha }, (err, newUser) => {
+      if (err) {
+        console.error('Erro ao registrar usuário:', err);
+        return res.render('register', { error: 'Erro ao registrar.' });
+      }
+
+      req.session.user = newUser; // já loga o usuário
+      res.redirect('/nfe'); // manda direto para o sistema
+    });
+  });
+};
+

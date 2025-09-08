@@ -5,6 +5,7 @@
   <title>Gerar NF-e</title>
 </head>
 <body>
+  <%- include ('partials/header', {title: "Nova NF-e"}) %>
   <h2>Emitir NF-e</h2>
   <form action="/nfe/gerar" method="POST">
     <label>CNPJ Emitente:</label>
@@ -23,5 +24,6 @@
   </form>
 
   <a href="/logout">Sair</a>
+  <%- include ('partials/footer') %>
 </body>
 </html>

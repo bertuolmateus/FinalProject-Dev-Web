@@ -3,8 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <title>Login</title>
+  <link rel="stylesheet" href="/style.css">
 </head>
 <body>
+  <%- include ('partials/header', {title: "Login"}) %>
   <h2>Entrar</h2>
   <form action="/login" method="POST">
     <label>Usuário ou Email:</label>
@@ -19,5 +21,12 @@
   <% if (error) { %>
     <p style="color:red;"><%= error %></p>
   <% } %>
+
+  <form action="/register" method="GET">
+    <button type="submit">Criar Conta</button>
+  </form>
+
+  <%- include ('partials/footer') %>
+  
 </body>
 </html>
