@@ -2,6 +2,7 @@ const express = require('express');
 const session = require('express-session');
 const path = require('path');
 const bodyParser = require('body-parser');
+const PORT = process.env.PORT || 3060;
 
 const app = express();
 
@@ -23,6 +24,6 @@ const nfeRoutes = require('./routes/nfe');
 app.use('/', authRoutes);
 app.use('/nfe', nfeRoutes);
 
-app.listen(3060, () => {
+app.listen(PORT, () => {
   console.log('Servidor rodando em http://localhost:3060');
 });
