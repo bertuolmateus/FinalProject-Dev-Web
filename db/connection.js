@@ -12,12 +12,12 @@ const db = mysql.createPool({
   queueLimit: 0
 });
 
-// Testa a conexão inicial
+// Teste da conexão inicial
 db.getConnection((err, connection) => {
   if (err) {
-    console.error('❌ Erro ao conectar ao MySQL:', err);
+    console.error('Erro ao conectar ao MySQL:', err);
   } else {
-    console.log('✅ Conectado ao MySQL via pool!');
+    console.log('Conectado ao MySQL via pool!');
     connection.release();
   }
 });
