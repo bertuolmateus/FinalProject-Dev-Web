@@ -73,14 +73,14 @@ exports.postRegister = (req, res) => {
 
     // Cria novo usuário
     User.create({ nome, email, senha }, (err, newUser) => {
-      if (err) {
-        console.error('Erro ao registrar usuário:', err);
-        return res.render('register', { error: 'Erro ao registrar.' });
-      }
+  if (err) {
+    console.error('Erro ao registrar usuário:', err.code, err.sqlMessage);
+    return res.render('register', { error: `Erro ao registrar: ${err.code}` });
+  }
+  req.session.user = newUser;
+  res.redirect('/nfe');
+});
 
-      req.session.user = newUser; // já loga o usuário
-      res.redirect('/nfe'); // manda direto para o sistema
-    });
   });
 };
 
