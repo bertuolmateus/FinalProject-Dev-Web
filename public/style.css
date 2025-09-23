@@ -10,10 +10,10 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  background-color: #e8f5e9; /* verde clarinho */
+  background-color: #e8f5e9; 
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  justify-content: center; /* centraliza vertical */
-  align-items: center;     /* centraliza horizontal */
+  justify-content: center; 
+  align-items: center;     
   margin: 0;
 }
 /* Header */

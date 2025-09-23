@@ -10,13 +10,13 @@
   <h2>Emitir NF-e</h2>
   <form action="/nfe/gerar" method="POST">
     <label>CNPJ Emitente:</label>
-    <input type="text" name="cnpjEmitente" required><br>
+    <input type="text" name="cnpjEmitente" maxlength="14" placeholder="(apenas números)"  required><br>
 
     <label>Nome/Razão Social Destinatário:</label>
     <input type="text" name="nomeDestinatario" required><br>
 
     <label>CNPJ Destinatário:</label>
-    <input type="text" name="cnpjDestinatario" required><br>
+    <input type="text" name="cnpjDestinatario" maxlength="14" placeholder="(apenas números)" required><br>
 
     <label>Endereço Destinatário:</label>
     <input type="text" name="endereco" required><br>
